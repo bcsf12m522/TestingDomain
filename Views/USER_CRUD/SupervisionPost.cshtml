@@ -137,34 +137,38 @@
 
                                                                     @if (v.voucher_type == "BV")
                                                                     {
-                                                                        <a href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                     }
                                                                     else if (v.voucher_type == "JV")
                                                                     {
-                                                                        <a href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                     }
                                                                     else if (v.voucher_type == "BP")
                                                                     {
                                                                         if (v.description != "WHT")
                                                                         {
-                                                                            <a href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                            <a onclick="return check(this);" href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                         }
                                                                     }
                                                                     else if (v.voucher_type == "CP")
                                                                     {
-                                                                        <a href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                     }
                                                                     else if (v.voucher_type == "CR")
                                                                     {
-                                                                        <a href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
                                                                     }
                                                                     else if (v.voucher_type == "EV")
                                                                     {
-                                                                        <a onclick="" href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
+                                                                    }
+                                                                    else if (v.voucher_type == "PRV" && v.pvr_type == 1)
+                                                                    {
+                                                                        <a onclick="return check(this);" href="@Url.Action("Production", "GoodsManagement", new { id = @v.Id })"> OK</a>
                                                                     }
                                                                     else
                                                                     {
-                                                                        <a style="color:#fff" href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
+                                                                        <a onclick="return check(this);" style="color:#fff" href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
                                                                     }
                                                                 </td>
                                                                 <td>
@@ -219,38 +223,38 @@
 
                                                                 @if (v.voucher_type == "BV")
                                                                 {
-                                                                    <a href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "JV")
                                                                 {
-                                                                    <a href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "BP")
                                                                 {
                                                                     if (v.description != "WHT")
                                                                     {
-                                                                        <a href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                        <a onclick="return check(this);" href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                     }
                                                                 }
                                                                 else if (v.voucher_type == "CP")
                                                                 {
-                                                                    <a href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "CR")
                                                                 {
-                                                                    <a href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "EV")
                                                                 {
-                                                                    <a href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "PRV" && v.pvr_type == 1)
                                                                 {
-                                                                    <a href="@Url.Action("Production", "GoodsManagement", new { id = @v.Id })"> OK</a>
+                                                                    <a onclick="return check(this);" href="@Url.Action("Production", "GoodsManagement", new { id = @v.Id })"> OK</a>
                                                                 }
                                                                 else if (v.voucher_type == "SV" || v.voucher_type == "PV" || v.voucher_type == "UPPV" || v.voucher_type == "UPSV")
                                                                 {
-                                                                    <a style="background-color:#fff" href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
+                                                                    <a onclick="return check(this);" style="background-color:#fff" href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
                                                                 }
                                                             </td>
                                                             <td>
@@ -307,6 +311,20 @@
         });
 
     </script>
+    <script>
+
+    function check(link) {
+    if (link.className != "visited") {
+
+    link.className = "visited";
+    return true;
+    }
+    alert("Already Done");
+    return false;
+    }
+    </script>
+
+
 </body>
 </html>
 

@@ -88,7 +88,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="head"  class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts)
+                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
                                                 {
                                                     <option value="@head.head_id">@head.MainAccount.name -> @head.name </option>
                                                     
@@ -107,9 +107,9 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="subHead"  class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts)
+                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
                                                 {
-                                                    foreach (var sub in head.SubHeadAccounts)
+                                                    foreach (var sub in head.SubHeadAccounts.Where(x=>x.is_active=="Y"))
                                                     {
                                                         <option value="@sub.sub_head_id"> @head.MainAccount.name -> @head.name -> @sub.name</option>
                                                     }
@@ -128,11 +128,11 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="transactionAccount" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts)
+                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
                                                 {
-                                                    foreach (var sub in head.SubHeadAccounts)
+                                                    foreach (var sub in head.SubHeadAccounts.Where(x => x.is_active == "Y"))
                                                     {
-                                                        foreach(var trans in sub.TransactionAccounts)
+                                                        foreach (var trans in sub.TransactionAccounts.Where(x => x.is_active == "Y"))
                                                         {
                                                             <option value="@trans.id">@head.name ->  @sub.name -> @trans.name </option>
                                                         }

@@ -188,6 +188,11 @@
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);
 
 
+                                                    if (t.extra == "Sale")
+                                                    {
+                                                        continue;
+                                                    }
+
                                                     if (result1 < 0 || result1 == 0)
                                                     {
 

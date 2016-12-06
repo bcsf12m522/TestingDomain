@@ -125,6 +125,13 @@
                                                                     values = (String.Format("{0:0,0}", v.quantity));
                                                                     <td>@values</td>
                                                                 }
+                                                                else if (v.voucher_type == "PRV")
+                                                                {
+                                                                    <td>@v.good_</td>
+                                                                    values = (String.Format("{0:0,0}", v.net_weight));
+                                                                    <td>@values</td>
+
+                                                                }
                                                                 else
                                                                 {
                                                                     <td>@v.item</td>
@@ -209,6 +216,14 @@
                                                                 <td>@v.good_.Trim()</td>
                                                                 values = (String.Format("{0:0,0}", v.quantity));
                                                                 <td>@values</td>
+                                                            }
+                                                            
+                                                            else if (v.voucher_type == "PRV")
+                                                            {
+                                                                <td>@v.good_</td>
+                                                                values = (String.Format("{0:0,0}", v.net_weight));
+                                                                <td>@values</td>
+
                                                             }
 
                                                             else

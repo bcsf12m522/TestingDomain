@@ -176,6 +176,11 @@
 
                                             @foreach (var t in Model)
                                             {
+
+                                                if (t.extra == "Sale")
+                                                {
+                                                    continue;
+                                                }
                                                 if(t.Id %2 ==0)
                                                 {
                                                     continue;

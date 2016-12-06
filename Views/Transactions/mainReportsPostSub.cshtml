@@ -1,6 +1,6 @@
 ﻿@model  ranglerz_project.Models.SubHeadAccount
 @{
-    ViewBag.Title = "ExpenseReportsPostSub";
+    ViewBag.Title = "MainReportsPostSub";
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
@@ -226,6 +226,13 @@
                                                 result2 = DateTime.Compare(ViewBag.end, Convert.ToDateTime(t.created_at));
                                                 crCommas = (String.Format("{0:0,0}", t.cr));
                                                 drCommas = (String.Format("{0:0,0}", t.dr));
+
+
+                                                if (t.extra == "Sale")
+                                                {
+                                                    continue;
+                                                }
+                                                
                                                 if (result1 < 0 || result1 == 0)
                                                 {
 

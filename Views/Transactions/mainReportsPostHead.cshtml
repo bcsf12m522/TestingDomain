@@ -1,6 +1,6 @@
 ﻿@model  ranglerz_project.Models.HeadAccount
 @{
-    ViewBag.Title = "ExpenseReportsPostHead";
+    ViewBag.Title = "MainReportsPostHead";
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
@@ -193,6 +193,12 @@
                                                     crCommas = (String.Format("{0:0,0}", t.cr));
                                                     drCommas = (String.Format("{0:0,0}", t.dr));
 
+
+                                                    if (t.extra == "Sale")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    
                                                     if (result1 < 0 || result1 == 0)
                                                     {
 

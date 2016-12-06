@@ -221,7 +221,15 @@
                                                 result2 = DateTime.Compare(ViewBag.end, Convert.ToDateTime(t.created_at));
                                                 crCommas = (String.Format("{0:0,0}", t.cr));
                                                 drCommas = (String.Format("{0:0,0}", t.dr));
-                                                if (result1 < 0 || result1 == 0)
+
+
+                                                if (t.extra == "Sale")
+                                                {
+                                                    continue;
+                                                }
+                                                        
+                                                         
+                                               if (result1 < 0 || result1 == 0)
                                                 {
 
 

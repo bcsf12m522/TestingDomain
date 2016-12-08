@@ -161,10 +161,7 @@
                                         <thead>
                                             <tr class="headings">
                                              
-                                                @if (sesion == "Admin")
-                                                {
-                                                    <th>User Name</th> 
-                                                }
+                                                
                                                
                                                 <th>Date </th>
                                                 <th>Type </th>
@@ -202,19 +199,6 @@
                                                     
                                                                     <tr class="even pointer">
                                                              
-                                                                    @if(sesion=="Admin")
-                                                                   {
-                                                                       if(t.User!=null)
-                                                                       {
-                                                                       <td>@t.User.name</td>
-                                                                       }
-                                                                       
-                                                                       else if(t.Admin!=null)
-                                                                       {
-                                                                                <td>@t.Admin.username</td>
-                                                                    }
-                                                                   
-                                                                    }
                                                                    
                                                                     <td>@t.created_at.ToShortDateString()</td>
                                                    
@@ -259,6 +243,7 @@
                                                                         @if(t.description !="WHT" &&  allReportsEdit == 1)
                                                                         { 
                                                                         <a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a>
+                                                                        <a href="@Url.Action("Detail","Transactions" , new {id= @t.Id} )">Detail</a>
                                                                         }  
                                                                             </td>
                                                     

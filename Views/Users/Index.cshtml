@@ -31,6 +31,7 @@
 
     var Base64 = Convert.ToBase64String(@Model.image);
     var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
+    string value = "0";
     
 }
 
@@ -515,7 +516,7 @@
                 <div class="col-md-6" style="margin:30px 230px 30px 230px;">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Favourite Accounts <small>Detail</small></h2>
+                            <h2>Pin Accounts</h2>
                             <ul class="nav navbar-right panel_toolbox">
 
                                 <li>
@@ -529,12 +530,13 @@
                             <ul class="list-unstyled msg_list">
                                 @foreach (var name in ViewBag.pinAccounts)
                                 {
+                                    value = (String.Format("{0:0,0}", @name.Balance));
                                     <li>
                                         <a href="~/Admin/PinAccountDetail/@name.id/">
 
                                             <span>
-                                                <span>@name.Name</span>
-                                                <span class="time">@name.Balance</span>
+                                                <span><strong>@name.Name</strong> </span>
+                                                <span class="time">Current Balance : @value </span>
                                             </span>
                                             <span class="message">
                                                 Last Updated : @name.Updated_Time

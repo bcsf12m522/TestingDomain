@@ -57,6 +57,10 @@
         <AssociationConnector Association="Database1Model.FK_sale_Reports_Permissions_U" />
         <EntityTypeShape EntityType="Database1Model.bankPayment_Reports_Permissions" Width="1.5" PointX="5" PointY="37.875" />
         <AssociationConnector Association="Database1Model.FK_bankPayment_Reports_Permissions_U" />
+        <EntityTypeShape EntityType="Database1Model.Pin_Accounts" Width="1.5" PointX="10" PointY="14.375" />
+        <AssociationConnector Association="Database1Model.FK_Pin_Accounts_Admin" />
+        <AssociationConnector Association="Database1Model.FK_Pin_Accounts_User" />
+        <EntityTypeShape EntityType="Database1Model.Users_Log" Width="1.5" PointX="14.375" PointY="11.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

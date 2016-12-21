@@ -79,47 +79,47 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("ExpensePost", "TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" onsubmit="return submitResult();" action="@Url.Action("ExpensePost", "TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                             HeadAccount <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="head"  class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="head" class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
+                                                @foreach (var head in Model.HeadAccounts.Where(x => x.is_active == "Y"))
                                                 {
                                                     <option value="@head.head_id">@head.MainAccount.name -> @head.name </option>
-                                                    
-                                                  
+
+
                                                 }
 
 
                                             </select>
                                         </div>
-                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                             SubHeadAccount <span class="required">*</span>
                                         </label>
 
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="subHead"  class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="subHead" class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
+                                                @foreach (var head in Model.HeadAccounts.Where(x => x.is_active == "Y"))
                                                 {
-                                                    foreach (var sub in head.SubHeadAccounts.Where(x=>x.is_active=="Y"))
+                                                    foreach (var sub in head.SubHeadAccounts.Where(x => x.is_active == "Y"))
                                                     {
                                                         <option value="@sub.sub_head_id"> @head.MainAccount.name -> @head.name -> @sub.name</option>
                                                     }
-                                                  
+
                                                 }
 
 
                                             </select>
                                         </div>
-                                  </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                             TransactionAccount <span class="required">*</span>
@@ -128,7 +128,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="transactionAccount" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var head in Model.HeadAccounts.Where(x=>x.is_active=="Y"))
+                                                @foreach (var head in Model.HeadAccounts.Where(x => x.is_active == "Y"))
                                                 {
                                                     foreach (var sub in head.SubHeadAccounts.Where(x => x.is_active == "Y"))
                                                     {
@@ -176,7 +176,7 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
                                         </div>
                                     </div>
-                            </div>
+</div>
                             <div class="form-group">
 
 
@@ -219,6 +219,18 @@
     <script src="~/Scripts/js/bootstrap.min.js"></script>
 
     <script src="~/Scripts/js/custom.js"></script>
+
+    <script type="text/javascript">
+    function submitResult() {
+        if (confirm("Are You Sure To Post?") == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    </script>
+
+
 
 </body>
 

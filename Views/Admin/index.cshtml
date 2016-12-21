@@ -201,6 +201,10 @@
                                             <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
                                         </li>
 
+                                        <li>
+                                            <a href="~/Transactions/TrialBalanceReport/"><i class="fa fa-bar-chart-o"></i> Trial Balance Report</a>
+                                        </li>
+
                                     </ul>
 
                                 </li>
@@ -260,7 +264,11 @@
                                 <li>
                                     <a href="~/USER_CRUD/ReportsPermissions/@Model.Id"><i class="fa fa-bar-chart-o"></i>Add Permissions</a>
                                 </li>
-
+                                <li>
+                                    <a href="~/Home/PinAccounts/@Model.Id"><i class="fa fa-bar-chart-o"></i>Pin Accounts</a>
+                                </li>
+                               
+                               
                                 <li style="">
                                     <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
                                 </li>
@@ -323,12 +331,14 @@
             <!-- page content -->
             <div class="right_col" role="main">
 
+               <!--------------------------------------------------------------------------------------------->
 
 
 
+               
 
+                
 
-                <!-- top tiles -->
                 <div class="row tile_count">
                     <div class="animated flipInY col-md-3 col-sm-4 col-xs-4 tile_stats_count">
                         <div class="left"></div>
@@ -364,6 +374,134 @@
                     </div>
 
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               <!-------------------------------------------------------------------------------------------->
+
+                <!-- top tiles -->
+                
+
+                <div class="col-md-6">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Favourite Accounts <small>Detail</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                              
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <ul class="list-unstyled msg_list"> 
+                                @foreach (var name in ViewBag.pinAccounts)
+                                {    
+                                <li>
+                                    <a href="~/Admin/PinAccountDetail/@name.id/">
+                                       
+                                        <span>
+                                            <span>@name.Name</span>
+                                            <span class="time">@name.Balance</span>
+                                        </span>
+                                        <span class="message">
+                                          Last Updated : @name.Updated_Time
+                                        </span>
+                                    </a>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- /top tiles -->
 
                 <br />

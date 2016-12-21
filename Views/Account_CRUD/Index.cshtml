@@ -163,7 +163,21 @@
 
                                                                                                         @foreach (var tr in sub.TransactionAccounts.Where(x=>x.is_active=="Y"))
                                                                                                         {
-                                                                                                            <p style="background-color:#ff0000;color:#fff;padding:5px;">@tr.name</p>
+                                                                                                            <div class="col-md-10" style="background-color:#ff0000;color:#fff;padding:5px; margin:2px 0 3px;">@tr.name</div>
+
+                                                                                                            if (accDelete == "Y")
+                                                                                                            {
+                                                                                                                <a href="~/Account_CRUD/DeleteTransactionAccount/@tr.id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
+                                                                                                            }
+
+                                                                                                            if (accUpdate == "Y")
+                                                                                                            {
+                                                                                                                <a href="~/Account_CRUD/EditTransactionAccount/@tr.id/">Edit</a>
+                                                                                                            }
+
+                                                                                                            
+                                                                                                <div class="clearfix"></div>
+                                                                                         
                                                                                                         }
 
                                                                                                         <div class="clearfix"></div>  
@@ -483,7 +497,7 @@
 
                     <form action="@Url.Action("CreatePostTrans", "Account_CRUD", new { @class = "hiddenid4" })" method="post" class="form-horizontal form-label-left">
 
-                        <div class="form-group">
+                        @*<div class="form-group">
 
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                  Code <span class="required">*</span>
@@ -491,7 +505,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" readonly name="code" value="@transactionID" class="form-control col-md-7 col-xs-12">
                             </div>
-                        </div>
+                        </div>*@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">

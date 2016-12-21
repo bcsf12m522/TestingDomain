@@ -134,11 +134,11 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("AddSaleVoucher", "TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" onsubmit="return submitResult();" action="@Url.Action("AddSaleVoucher", "TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
 
-                                    
-                                   
+
+
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                             To Client <span class="required">*</span>
@@ -150,11 +150,11 @@
                                                 {
                                                     <option value="@tr.id">@tr.MainAccount.name -> @tr.name </option>
                                                 }
-                                          
+
 
                                             </select>
-                                      </div>
-                                              
+                                        </div>
+
 
 
                                     </div>
@@ -168,7 +168,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Truck </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -184,7 +184,7 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Load </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtFirstValue" onkeyup="javascript:Add();"  class="form-control col-md-7 col-xs-12" type="text" name="load" required>
+                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -202,7 +202,7 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Net Weight </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtTotal" class="form-control col-md-7 col-xs-12"  readonly type="text" name="net" required>
+                                            <input id="txtTotal" class="form-control col-md-7 col-xs-12" readonly type="text" name="net" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -217,7 +217,7 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
                                         </div>
                                     </div>
-                            </div>
+</div>
                             
                             <div class="ln_solid"></div>
                             <div class="form-group">
@@ -345,12 +345,32 @@
                 }
             });
         }
-
+        
 
 
 
 
     </script>
+
+
+
+    <script type="text/javascript">
+    function submitResult() {
+        if (confirm("Are You Sure To Post?") == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    </script>
+
+
+
+
+
+
+
+
 
 
 

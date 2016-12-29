@@ -103,7 +103,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
+                                                @foreach (var tr in Model.Where(x => x.type_ == "Bank"))
                                                 {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
                                                 }

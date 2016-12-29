@@ -132,7 +132,7 @@
                                                 {
                                                     foreach (var sub in head.SubHeadAccounts.Where(x => x.is_active == "Y"))
                                                     {
-                                                        foreach (var trans in sub.TransactionAccounts.Where(x => x.is_active == "Y"))
+                                                        foreach (var trans in sub.TransactionAccounts.Where(x =>x.type_ == "Cash" || x.type_ =="Expense" && x.is_active == "Y"))
                                                         {
                                                             <option value="@trans.id">@head.name ->  @sub.name -> @trans.name </option>
                                                         }

@@ -1,7 +1,9 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "Multi voucher";
+    ViewBag.Title = "MultiVoucher2";
 }
+
+
 
 
 
@@ -50,7 +52,7 @@
     </script>
 
 
-    
+
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -64,7 +66,7 @@
                     if (i ==0) {
                         $("#firstEntry").addClass("showDiv");
                     }
-                    
+
                     "<br>"
                     if (i == 1) {
                         $("#secondEntry").addClass("showDiv");
@@ -87,9 +89,9 @@
 
                 if (countries.length > 5)
                 {
-                    
+
                     alert(" Limit Exceed...You can select maximum 5 accounts!!!");
-                  
+
                 }
 
                 if (countries.length == 5)
@@ -108,7 +110,7 @@
                     $("#secondEntryInput").val(countries[1])
                     $("#thirdEntryInput").val(countries[2])
                     $("#fourthEntryInput").val(countries[3])
-                   
+
                     $("#fifthEntry").removeClass("showDiv");
                     $("#fifthEntry").addClass("hideDiv");
                 }
@@ -129,7 +131,7 @@
 
                     $("#firstEntryInput").val(countries[0])
                     $("#secondEntryInput").val(countries[1])
-               
+
 
 
 
@@ -143,7 +145,7 @@
                 if (countries.length < 2) {
 
                     $("#firstEntryInput").val(countries[0])
-                 
+
 
 
                     $("#fifthEntry").removeClass("showDiv");
@@ -168,21 +170,21 @@
                     $("#firstEntry").addClass("hideDiv");
                 }
 
-               
-               
-              
+
+
+
                 //alert("You have selected the Accounts - " + countries.join(", "));
             });
         });
     </script>
 
     <style>
-        .hideDiv{
-            display:none;
+        .hideDiv {
+            display: none;
         }
 
-        .showDiv{
-            display :block;
+        .showDiv {
+            display: block;
         }
     </style>
 
@@ -223,10 +225,10 @@
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <form id="demo-form2" onsubmit="return submitResult();" action="@Url.Action("MultiVoucherPost","TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                        <form id="demo-form2" onsubmit="return submitResult();" action="@Url.Action("MultiVoucherPost2","TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>New Multi Debit <strong>@ViewBag.Code</strong></h2>
+                                    <h2>New Multi Credit <strong>@ViewBag.Code</strong></h2>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -234,28 +236,28 @@
                                     <br />
 
 
-                                
-                                   
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                                From <span class="required">*</span>
-                                            </label>
-
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                    <option value="">Please select any </option>
-                                                    @foreach (var tr in Model)
-                                                    {
-                                                        <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                                    }
 
 
-                                                </select>
-                                            </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                            To <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in Model)
+                                                {
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                }
+
+
+                                            </select>
                                         </div>
-                                        
+                                    </div>
 
-                                        @*<div class="form-group">
+
+                                    @*<div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                                 To <span class="required">*</span>
                                             </label>
@@ -270,37 +272,37 @@
                                                 </select>
                                             </div>
                                         </div>*@
-                                        @*<div class="form-group">
+                                    @*<div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount" required>
                                             </div>
                                         </div>*@
-                                        
+
 
                                     @*<div class="input_fields_wrap">
-                                        <button class="add_field_button">Add More Fields</button>
-                                        <div>
-                                        <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                    <option value="">Please select any </option>
-                                                    @foreach (var tr in Model)
-                                                    {
-                                                        <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                                    }
+                                            <button class="add_field_button">Add More Fields</button>
+                                            <div>
+                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                        <option value="">Please select any </option>
+                                                        @foreach (var tr in Model)
+                                                        {
+                                                            <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                        }
 
-                                          </select>
-                                        </div>
-                                    </div>*@
+                                              </select>
+                                            </div>
+                                        </div>*@
 
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            To <span class="required">*</span>
+                                            From <span class="required">*</span>
                                         </label>
 
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="to" id="getin" required class="form-control chzn-select col-md-7 col-xs-12 country" multiple style="width:453px; " tabindex="4">
-                                               
+                                            <select name="from" id="getin" required class="form-control chzn-select col-md-7 col-xs-12 country" multiple style="width:453px; " tabindex="4">
+
                                                 @foreach (var tr in Model)
                                                 {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
@@ -308,14 +310,14 @@
 
 
                                             </select>
-                                          
+
                                         </div>
                                     </div>
 
 
 
 
-                                     
+
 
                                     <div id="firstEntry" class="hideDiv form-group">
                                         <div class="form-group">
@@ -324,12 +326,12 @@
                                                 <input id="firstEntryInput" readonly class="form-control col-md-7 col-xs-12" type="text" name="account1" value="" />
                                             </div>
                                         </div>
-                                       
-                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount1 </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount1" value="0" required>
-                                            </div>
-                                    
+
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount1 </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount1" value="0" required>
+                                        </div>
+
                                     </div>
 
 
@@ -338,7 +340,7 @@
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Acount2 </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="secondEntryInput" readonly class="form-control col-md-7 col-xs-12" type="text" value="" name="account2" />
-                                             </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount2 </label>
@@ -355,14 +357,14 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="thirdEntryInput" readonly class="form-control col-md-7 col-xs-12" name="account3" type="text" value="" />
                                             </div>
-                                         </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount3 </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount3" value="0" required>
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount3 </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount3" value="0" required>
                                             </div>
                                         </div>
+                                    </div>
 
 
 
@@ -371,16 +373,16 @@
                                         <div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Acount4 </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fourthEntryInput" readonly class="form-control col-md-7 col-xs-12" type="text"  name="account4" value="" />
-                                            </div>
-                                         </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount4 </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount4" value="0" required>
-                                                </div>
+                                                <input id="fourthEntryInput" readonly class="form-control col-md-7 col-xs-12" type="text" name="account4" value="" />
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount4 </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount4" value="0" required>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
 
@@ -395,19 +397,13 @@
                                             </div>
 
                                         </div>
-                                            <div class="form-group">
-                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount5 </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount5"  value="0">
-                                                </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount5 </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount5" value="0">
                                             </div>
                                         </div>
-
-
-                                   
-
-
-                                    
+                                    </div>
 
 
 
@@ -415,7 +411,13 @@
 
 
 
-                  <!------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+                                    <!------------------------------------------------------------------------------------------------------------------------------->
 
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
@@ -434,7 +436,7 @@
 
 
 
-                 <!------------------------------------------------------------------------------------------------------------------------------->
+                                    <!------------------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -448,7 +450,7 @@
 
 
 
-                                    </div>
+                                </div>
 
 
 
@@ -461,13 +463,13 @@
                                         <input type="hidden" name="voucherCode" value="@ViewBag.Code" />
                                         <input type="hidden" name="voucherLastID" value="@ViewBag.LastID" />
                                         @*<input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />*@
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </form>
 
-                        
+
 
                     </div>
 
@@ -505,7 +507,7 @@
             }
         }
     </script>
-   
+
     <script>
 
         $(document).ready(function () {
@@ -530,8 +532,8 @@
     </script>
 
 
-   
- 
+
+
     <script type="text/javascript">
         var config = {
             '.chosen-select': {},
@@ -552,3 +554,5 @@
 </body>
 
 </html>
+
+

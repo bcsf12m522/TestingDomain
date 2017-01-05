@@ -94,8 +94,9 @@
                                                 <th>Type </th>
                                                 <th>Code </th>
                                                 <th>Description </th>
-                                                <th>From </th>
-                                                <th>To </th>
+                                                <th>Debit </th>
+                                                <th>Credit </th>
+                                                
                                                 <th>Item </th>
                                                 <th>Amount </th>
                                                 <th>Post </th>
@@ -129,8 +130,9 @@
 
 
                                                                 <td class=" ">@v.description</td>
-                                                                <td>@v.from_account</td>
                                                                 <td>@v.to_account</td>
+                                                                <td>@v.from_account</td>
+                                                               
 
 
                                                                 @if (v.voucher_type == "SV" || v.voucher_type == "PV" || v.voucher_type == "UPPV" || v.voucher_type == "UPSV")

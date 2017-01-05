@@ -96,6 +96,22 @@
                                 <br />
                                 <form id="demo-form2" onsubmit="return submitResult();" action="@Url.Action("bankPaymentPost", "TemporaryReports")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Debit <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in Model)
+                                                {
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                             Credit <span class="required">*</span>
@@ -108,21 +124,6 @@
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
                                                 }
 
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Debit <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
-                                                {
-                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                                }
 
                                             </select>
                                         </div>

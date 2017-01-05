@@ -12,6 +12,7 @@
     int uppv = Convert.ToInt32(Session["UPPV"]);
     int ev = Convert.ToInt32(Session["EV"]);
     int homeScreen = Convert.ToInt32(Session["homeScreen"]);
+   
 
     int allReports = Convert.ToInt32(Session["all_reports"]);
     int saleReports = Convert.ToInt32(Session["sale_reports"]);
@@ -361,9 +362,13 @@
                                                 <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
                                             </li>
                                         }
+                                        @if(Model.trial_balance ==1)
+                                        {
+                                             
                                         <li>
                                             <a href="~/Transactions/TrialBalanceReport/"><i class="fa fa-bar-chart-o"></i> Trial Balance Report</a>
                                         </li>
+                                        }
                                         
                                     </ul>
 
@@ -440,12 +445,21 @@
                                     <a target="_blank" href="~/GoodsManagement/listOfGoods/"><i class="fa fa-bar-chart-o"></i>Goods Management</a>
                                 </li>
                                 }
+                                
+                                <li>
+                                    <a href="~/GoodsManagement/viewUnitRates/"> <i class="fa fa-bar-chart-o"></i>View Unit Rates </a>
+                                </li>
 
                                 <li>
                                     <a href="~/Home/ChangePassword/@Model.Id"><i class="fa fa-bar-chart-o"></i>Change Password</a>
                                 </li>
                                 <li>
                                     <a href="~/Home/PinAccounts/@Model.Id"><i class="fa fa-bar-chart-o"></i>Pin Accounts</a>
+                                </li>
+
+                                <li>
+                                    <a target="_blank" href="~/Stock/index/"><i class="fa fa-bar-chart-o"></i> Stock Report</a>
+
                                 </li>
 
                                 <li style="">

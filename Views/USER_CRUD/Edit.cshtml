@@ -327,11 +327,11 @@
 
                                             @if (Model.all_reports == 1)
                                             {
-                                                <input type="checkbox" name="viewAll" value="viewAll" checked><label>View All</label>
+                                                <input type="checkbox" name="viewAll" value="viewAll" checked><label>Ledgers</label>
                                             }
                                             @if (Model.all_reports == 0)
                                             {
-                                                <input type="checkbox" name="viewAll" value="viewAll"> <label>View All</label>
+                                                <input type="checkbox" name="viewAll" value="viewAll"> <label>Ledgers</label>
                                             }
 
                                             @if (Model.sale_reports == 1)
@@ -370,8 +370,14 @@
                                             {
                                                 <input type="checkbox" name="viewPurchase" value="viewPurchase"><label>View Purchase</label>
                                             }
-
-
+                                            @if(Model.trial_balance ==0)
+                                            {
+                                                <input type="checkbox" name="trialBalance" value="trialBalance"><label>Trial Balance </label>
+                                            }
+                                            @if (Model.trial_balance == 1)
+                                            {
+                                                <input type="checkbox" checked name="trialBalance" value="trialBalance"><label>Trial Balance </label>
+                                            }
                                         </div>
                                     </div>
 

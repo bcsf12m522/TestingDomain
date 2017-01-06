@@ -177,7 +177,7 @@
 
                                             @foreach (var v in Model)
                                             {
-                                                foreach (var t in v.Transactions.Where(x=>x.voucher_type=="SV").OrderBy(x=>x.created_at).ToList())
+                                                foreach (var t in v.Transactions.Where(x=>x.voucher_type=="SV" || x.voucher_type=="UPSV").OrderBy(x=>x.created_at).ToList())
                                                 {
                                                     //if (t.voucher_type == "JV" || t.voucher_type == "BV" || t.voucher_type == "BP" || t.voucher_type == "CP" || t.voucher_type == "CR")
                                                     //{

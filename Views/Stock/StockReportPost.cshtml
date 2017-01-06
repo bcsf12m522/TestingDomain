@@ -153,7 +153,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Balance(Rs.):</strong>@ViewBag.openingBalance</h2>
+                                    <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Weight(KG):</strong>@ViewBag.openingBalance</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -170,8 +170,8 @@
                                                 <th>Dr </th>
                                                 <th>Cr </th>
 
-                                                <th>Balance </th>
-                                                <th>Action</th>
+                                                <th>Weight(KG) </th>
+                                                
 
                                             </tr>
                                         </thead>
@@ -206,21 +206,33 @@
 
                                                                 <td>@t.voucher_type</td>
                                                                 <td>@t.voucher_code</td>
-                                                                <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
+                                                                <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>  @t.to_account </td>
+                                                                @if (t.voucher_type == "SV" || t.voucher_type == "UPSV")
+                                                                {
+                                                                    <td>0</td>
+                                                                    <td>@t.net_weight</td>
+                                                                    totalCredit =(int)(totalCredit + t.net_weight);
 
-                                                                <td>@crCommas</td>
-                                                                <td>@debCommas</td>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>@t.net_weight</td>
+                                                                    <td>0</td>
+                                                                    totalDebit =(int)(totalDebit + t.net_weight);
+                                                                }
+                                                               
 
                                                                 @{
 
 
-                                                            if (t.cr > 0)
+                                                            if (t.voucher_type == "SV" || t.voucher_type =="UPSV")
                                                             {
-                                                                balance = balance + t.cr;
+                                                                balance = balance - t.net_weight;
                                                             }
                                                             else
                                                             {
-                                                                balance = balance - t.dr;
+                                                                balance = balance + t.net_weight;
                                                             }
 
                                                             //   var tt = Convert.ToInt64(t.balance);
@@ -232,19 +244,19 @@
 
                                                                 @{
                                                             totalBalance = totalBalance + balance;
-                                                            totalCredit = totalCredit + t.cr;
-                                                            totalDebit = totalDebit + t.dr;
+                                                           
+                                                            
 
 
                                                                 }
 
-                                                                <td>
+                                                                @*<td>
                                                                     @if (t.description != "WHT" && allReportsEdit == 1)
                                                                     {
                                                                         <a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a>
                                                                         <a href="@Url.Action("Detail","Transactions" , new {id= @t.Id} )">Detail</a>
                                                                     }
-                                                                </td>
+                                                                </td>*@
 
 
 

@@ -459,7 +459,7 @@
                 <!-- top tiles -->
                 
 
-                <div class="col-md-6" style="margin:30px 230px 30px 230px;">
+                <div class="col-md-6" style="">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Pin Accounts</h2>
@@ -495,6 +495,45 @@
                     </div>
                 </div>
 
+
+               <!----------------------------------------------->
+
+                @*<div class="col-md-6" style="">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Pin Accounts 2</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <ul class="list-unstyled msg_list">
+                                @foreach (var name in ViewBag.pinAccounts)
+                                {
+                                    value = (String.Format("{0:0,0}", @name.Balance));
+                                    <li>
+                                        <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                            <span>
+                                                <span><strong>@name.Name</strong> </span>
+                                                <span class="time">Current Balance : @value </span>
+                                            </span>
+                                            <span class="message">
+                                                Last Updated : @name.Updated_Time
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+                
 
 
 

@@ -89,10 +89,30 @@
                             <div class="x_content">
                                 <br />
                                 <form id="demo-form2" action="@Url.Action("Edit", "ExpenseVoucher", new {id= Model.Id })" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                   
+                                     <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Debit <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="@Model.to_account">@Model.to_account</option>
+                                                <option value="">Please select any </option>
 
+                                                @foreach (var tr in ViewBag.MyList)
+                                                {
+                                                    if (@tr.MainAccount.main_id == 4)
+                                                    {
+                                                        <option value="@tr.name">@tr.MainAccount.name ->@tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
+                                                    }
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From <span class="required">*</span>
+                                            Credit <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
@@ -109,26 +129,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            To <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="@Model.to_account">@Model.to_account</option>
-                                                <option value="">Please select any </option>
-
-                                                @foreach (var tr in ViewBag.MyList)
-                                                {
-                                                    if(@tr.MainAccount.main_id == 4)
-                                                    { 
-                                                    <option value="@tr.name">@tr.MainAccount.name ->@tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
-                                                    }
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">

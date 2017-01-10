@@ -179,7 +179,7 @@
                                                 
                                               
                         
-                                                foreach (var t in v.Transactions.Where(x => x.voucher_type != "PRV" & x.updated_at <= ViewBag.date).OrderBy(x => x.created_at).ToList())
+                                                foreach (var t in v.Transactions.Where(x => x.is_active=="Y" & x.updated_at <= ViewBag.date).OrderBy(x => x.created_at).ToList())
                                                 {
 
 

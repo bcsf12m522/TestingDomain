@@ -174,7 +174,7 @@
 
                                         <tbody>
 
-                                            @foreach (var t in Model)
+                                            @foreach (var t in Model.Where(x=>x.is_active =="Y"))
                                             {
 
                                                 if (t.extra == "Sale")

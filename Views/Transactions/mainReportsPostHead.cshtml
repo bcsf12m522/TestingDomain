@@ -185,7 +185,7 @@
                                             foreach (var trans in sub.TransactionAccounts)
                                             {
 
-                                                foreach (var t in trans.Transactions.OrderBy(x => x.created_at).ToList())
+                                                foreach (var t in trans.Transactions.Where(x => x.is_active == "Y").OrderBy(x => x.created_at).ToList())
                                                 {
 
                                                     result1 = DateTime.Compare(ViewBag.start, Convert.ToDateTime(t.created_at));

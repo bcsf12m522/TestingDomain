@@ -113,7 +113,7 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="demo-form2" action="@Url.Action("StockReportPost","Stock")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                            <form id="demo-form2" action="@Url.Action("StockReportPost","Stock")" method="get" data-parsley-validate class="form-horizontal form-label-left">
 
                                 <div class="form-group">
 
@@ -169,9 +169,8 @@
                                                 <th>Description </th>
                                                 <th>Dr </th>
                                                 <th>Cr </th>
-
                                                 <th>Weight(KG) </th>
-                                                
+                                                <th>Action</th>
 
                                             </tr>
                                         </thead>
@@ -180,14 +179,14 @@
 
                                             @foreach (var v in Model.OrderBy(x => x.id))
                                             {
-                                                foreach (var t in v.Transactions.OrderBy(x => x.created_at).ToList())
+                                                foreach (var t in v.Transactions.Where(x=>x.is_active=="Y").OrderBy(x => x.created_at).ToList())
                                                 {
                                                     result1 = DateTime.Compare(ViewBag.start, t.created_at);
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);
                                                     debCommas = (String.Format("{0:0,0}", t.dr));
                                                     crCommas = (String.Format("{0:0,0}", t.cr));
 
-                                                    if (t.extra == "Sale" && v.main_id != 12)
+                                                    if (t.extra == "Sale" && v.main_id != 12 || t.net_weight ==null)
                                                     {
                                                         continue;
                                                     }
@@ -211,15 +210,21 @@
                                                                 {
                                                                     <td>0</td>
                                                                     <td>@t.net_weight</td>
-                                                                    totalCredit =(int)(totalCredit + t.net_weight);
+                                                                    totalCredit = (int)(totalCredit + t.net_weight);
 
 
+                                                                }
+                                                                else if (t.voucher_type == "PRV" && t.Id % 2 == 1)
+                                                                {
+                                                                    <td>0</td>
+                                                                    <td>@t.net_weight</td>
+                                                                    totalCredit = (int)(totalCredit + t.net_weight);
                                                                 }
                                                                 else
                                                                 {
                                                                     <td>@t.net_weight</td>
                                                                     <td>0</td>
-                                                                    totalDebit =(int)(totalDebit + t.net_weight);
+                                                                    totalDebit = (int)(totalDebit + t.net_weight);
                                                                 }
                                                                
 
@@ -227,6 +232,10 @@
 
 
                                                             if (t.voucher_type == "SV" || t.voucher_type =="UPSV")
+                                                            {
+                                                                balance = balance - t.net_weight;
+                                                            }
+                                                            else if (t.voucher_type == "PRV" && t.Id % 2 == 1)
                                                             {
                                                                 balance = balance - t.net_weight;
                                                             }
@@ -259,10 +268,12 @@
                                                                 </td>*@
 
 
+                                                                <td><a href="javascript:;" onclick="DeleteFunctionCall(@t.Id);">Delete</a></td>
 
-
+                                                                
 
                                                             </tr>
+                                              
                                                         }
                                                     }
                                                 }
@@ -270,14 +281,17 @@
                                         </tbody>
 
                                     </table>
+                                    <input type="hidden" id="searchingValue" value="@ViewBag.search" />
+                                    <input type="hidden" id="dateStart" value="@ViewBag.start" />
+                                    <input type="hidden" id="dateEnd" value="@ViewBag.end" />
                                     @{
                                         totalCreditCommas = (String.Format("{0:0,0}", totalCredit));
                                         totaldebitCommas = (String.Format("{0:0,0}", totalDebit));
                                         totalBalanceCommas = (String.Format("{0:0,0}", totalBalance));
                                     }
                                     @*<p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalanceCommas</p>*@
-                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
-                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
+                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
+                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
 
                                 </div>
                             </div>
@@ -355,7 +369,38 @@
 
 
 
+    <script>
 
+     
+
+
+        function  DeleteFunctionCall(id,name) {
+           
+           
+            var search = document.getElementById('searchingValue');
+            var strt = document.getElementById('dateStart').value;
+            var end = document.getElementById('dateEnd').value;
+            var name = search.value;
+           
+            var url = "/Stock/Delete/";
+            var vendorslist = "#VendorsDD";
+
+            $.ajax({
+                url: url,
+                data: { ID:id,SEARCH:name,START:strt,END:end},
+                cache: false,
+                type: "GET",
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+        }
+
+
+    </script>
 
 
 

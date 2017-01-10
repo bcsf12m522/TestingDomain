@@ -179,7 +179,7 @@
 
                                             @foreach (var v in Model.OrderBy(x => x.id))
                                             {
-                                                foreach (var t in v.Transactions.Where(x=>x.voucher_type=="PRV").OrderBy(x => x.created_at).ToList())
+                                                foreach (var t in v.Transactions.Where(x=>x.voucher_type=="PRV" & x.is_active =="Y").OrderBy(x => x.created_at).ToList())
                                                 {
                                                     result1 = DateTime.Compare(ViewBag.start, t.created_at);
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);

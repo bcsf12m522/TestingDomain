@@ -458,316 +458,340 @@
 
                 <!-- top tiles -->
                 
+                <div class="col-md-6">
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Receivable</h2>
+                                <ul class="nav navbar-right panel_toolbox">
 
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Pin Accounts</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                             
-                                </li>
-                              
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list"> 
-                                @foreach (var name in ViewBag.pinAccounts)
-                                {
-                                    value = (String.Format("{0:0,0}", @name.Balance));  
-                                <li style="position:relative;">
-                                    <a href="~/Admin/PinAccountDetail/@name.id/">
-                                       
-                                        <span>
-                                            <span><strong>@name.Name</strong></span>
-                                            <div class="clearfix"></div>
-                                            <span class="time">Current Balance : @value </span>
-                                        </span>
-                                        <span class="message">
-                                          Last Updated : @name.Updated_Time
-                                        </span>
-                                    </a>
-                                    <a href="~/Admin/UnpinAccount/@name.pinAccTableID" title="UnPin Account"><span class="fa fa-tag" style="position:absolute; right:10px; top:10px;"></span></a>
-                                </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 
+                                    </li>
 
-               <!----------------------------------------------->
-
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Payable</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.payable)
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.receivalbe)
                                 {
                                     value = (String.Format("{0:0,0}", @name.Balance));
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
+                                        <li style="position:relative;">
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
 
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
+                                                <span>
+                                                    <span><strong>@name.Name</strong></span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                            @*<a href="~/Admin/UnpinAccount/@name.pinAccTableID" title="UnPin Account"><span class="fa fa-tag" style="position:absolute; right:10px; top:10px;"></span></a>*@
+                                        </li>
                                 }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="clearfix"></div>
+                    <!----------------------------------------------->
+
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Banks</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.bank)
+                                {
+                                    value = (String.Format("{0:0,0}", @name.Balance));
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <!----------------------------------------------->
+
+
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Cash</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.cash)
+                                {
+                                    value = (String.Format("{0:0,0}", @name.Balance));
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <!------------------------------------------------->
+
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Income And Sale</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.incomeSale)
+                                {
+                                    value = (String.Format("{0:0,0}", @name.Balance));
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <!----------------------------------------------->
+
                 
-                <div class="clearfix"></div>
-                <!----------------------------------------------->
-
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Receivalbe</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.receivalbe)
-                                {
-                                    value = (String.Format("{0:0,0}", @name.Balance));
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
-
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
                 </div>
 
-
                 <!----------------------------------------------->
 
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Income And Sale</h2>
-                            <ul class="nav navbar-right panel_toolbox">
+                <div class="col-md-6">
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Payable</h2>
+                                <ul class="nav navbar-right panel_toolbox">
 
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
 
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.incomeSale)
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.payable)
                                 {
                                     value = (String.Format("{0:0,0}", @name.Balance));
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
 
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
                                 }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="clearfix"></div>
-
+                    <div class="clearfix"></div>
 
 
+                    <!-------------------------------------------------->
 
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Transit And Sundry</h2>
+                                <ul class="nav navbar-right panel_toolbox">
 
-                <!----------------------------------------------->
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
 
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Transit And Sundry</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.transit)
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.transit)
                                 {
                                     value = (String.Format("{0:0,0}", @name.Balance));
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
 
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Balance : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
                                 }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                @*<div class="clearfix"></div>*@
-
+                    <div class="clearfix"></div>
 
 
-                <!----------------------------------------------->
 
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Cash</h2>
-                            <ul class="nav navbar-right panel_toolbox">
 
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
 
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.cash)
+
+
+                   
+
+
+
+                    <!----------------------------------------------->
+
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Stock</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.stock)
                                 {
-                                    value = (String.Format("{0:0,0}", @name.Balance));
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
+                                    int weight = 0;
+                                    if (Int32.TryParse(@name.weight, out weight))
+                                    {
+                                        value = (String.Format("{0:0,0}", weight));
+                                    }
+                                    else
+                                    {
+                                        value = @name.weight;
+                                    }
 
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
+
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Weight(KG) : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
                                 }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
 
-                <!----------------------------------------------->
+                   
 
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Banks</h2>
-                            <ul class="nav navbar-right panel_toolbox">
 
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
+                    <!----------------------------------------------->
 
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.bank)
-                                {
-                                    value = (String.Format("{0:0,0}", @name.Balance));
+                    <div class="col-md-12" style="">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Pin Accounts</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+
                                     <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
-
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Balance : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                @*<div class="clearfix"></div>*@
-
-
-                <!----------------------------------------------->
-
-                <div class="col-md-6" style="">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Stocks</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                @foreach (var name in ViewBag.stock)
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <ul class="list-unstyled msg_list">
+                                    @foreach (var name in ViewBag.pinAccounts)
                                 {
                                     int weight = 0;
                                     if(Int32.TryParse(@name.weight, out weight))
@@ -778,30 +802,31 @@
                                     {
                                         value = @name.weight;
                                     }
-                                    
-                                   
-                                    <li>
-                                        <a href="~/Admin/PinAccountDetail/@name.id/">
 
-                                            <span>
-                                                <span><strong>@name.Name</strong> </span>
-                                                <div class="clearfix"></div>
-                                                <span class="time">Current Weight(KG) : @value </span>
-                                            </span>
-                                            <span class="message">
-                                                Last Updated : @name.Updated_Time
-                                            </span>
-                                        </a>
-                                    </li>
+
+                                        <li>
+                                            <a href="~/Admin/PinAccountDetail/@name.id/">
+
+                                                <span>
+                                                    <span><strong>@name.Name</strong> </span>
+                                                    <div class="clearfix"></div>
+                                                    <span class="time">Current Weight(KG) : @value </span>
+                                                </span>
+                                                <span class="message">
+                                                    Last Updated : @name.Updated_Time
+                                                </span>
+                                            </a>
+                                        </li>
                                 }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="clearfix"></div>
                 </div>
 
                 <div class="clearfix"></div>
-
-
                 <!-- /top tiles -->
 
                 <br />

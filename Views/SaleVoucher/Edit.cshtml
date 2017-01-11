@@ -245,7 +245,7 @@
                                                 </div>
                                             </div>
                                             }
-                                        @if (Model.grn == "PV" || Model.voucher_type == "UPPV")
+                                        @if (Model.voucher_type == "PV" || Model.voucher_type == "UPPV")
                                         {
                                                 <div class="form-group">
                                                     <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
@@ -260,8 +260,8 @@
                                                     <input id="txtTotal" class="form-control col-md-7 col-xs-12" readonly type="text" value="@Model.net_weight" name="net" required>
                                                 </div>
                                             </div>
-@if (Model.voucher_type == "SV" || Model.voucher_type == "UPSV")
-{ 
+                                     @if (Model.voucher_type == "SV" || Model.voucher_type == "UPSV")
+                                      { 
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Client's Weight </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">

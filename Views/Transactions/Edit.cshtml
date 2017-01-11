@@ -128,7 +128,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             @if(@Model.cr!=0)
                                             {
-                                                if(Model.cheque_no != null)
+                                                if(Model.cheque_number != null)
                                                 {
                                                     credit = (int)(@Model.cr + @Model.tax);
                                                 }
@@ -141,7 +141,7 @@
                                             }
                                             else
                                             {
-                                                if(Model.cheque_no !=null)
+                                                if(Model.cheque_number !=null)
                                                 {
                                                    
                                                     credit = (int)(@Model.dr + @Model.tax);
@@ -155,7 +155,7 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" value="@credit" name="amount" required>
                                         </div>
                                     </div>
-                                    @if (@Model.cheque_no != null)
+                                    @if (@Model.voucher_type =="BP")
                                     {
 
                                         <div class="from-group">
@@ -216,10 +216,20 @@
 
 
                                     }
+                                    
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Debit Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.created_at.ToShortDateString()"    name="date" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12"  name="Debitdate" value="@ViewBag.debitDate" required>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Credit Date </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.created_at.ToShortDateString()" name="date" required>
                                         </div>
                                     </div>
                                     <div class="form-group">

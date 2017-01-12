@@ -1,6 +1,7 @@
 ﻿@model ranglerz_project.Models.Admin
 
 @{
+    ViewBag.Title = "Admin Panel";
     string value = "0";
 }           
 
@@ -792,32 +793,22 @@
                             <div class="x_content">
                                 <ul class="list-unstyled msg_list">
                                     @foreach (var name in ViewBag.pinAccounts)
-                                {
-                                    int weight = 0;
-                                    if(Int32.TryParse(@name.weight, out weight))
                                     {
-                                        value = (String.Format("{0:0,0}", weight));
-                                    }
-                                    else
-                                    {
-                                        value = @name.weight;
-                                    }
-
-
+                                        value = (String.Format("{0:0,0}", @name.Balance));
                                         <li>
                                             <a href="~/Admin/PinAccountDetail/@name.id/">
 
                                                 <span>
                                                     <span><strong>@name.Name</strong> </span>
                                                     <div class="clearfix"></div>
-                                                    <span class="time">Current Weight(KG) : @value </span>
+                                                    <span class="time">Current Balance : @value </span>
                                                 </span>
                                                 <span class="message">
                                                     Last Updated : @name.Updated_Time
                                                 </span>
                                             </a>
                                         </li>
-                                }
+                                    }
                                 </ul>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "Stock Report";
+    ViewBag.Title = "Stock Summary";
 }
 
 
@@ -88,17 +88,45 @@
 
                                         <tbody>
 
-                                            @foreach (var t in Model.Where(x => x.type_ == "Goods Account" & x.is_active=="Y"))
+                                            @foreach (var t in Model.Where(x => x.type_ == "Goods Account" & x.is_active == "Y"))
                                             {
+                                                int weight = 0;
+                                                if (t.opening_weight != null)
+                                                {
+                                                    weight = Convert.ToInt32(t.opening_weight);
+                                                }
 
+
+                                                foreach (var tr in t.Transactions.Where(x => x.is_active == "Y"))
+                                                {
+                                                    if (tr.extra == "Sale" && t.main_id != 12 || tr.net_weight == null)
+                                                    {
+                                                        continue;
+                                                    }
+                                                    if (tr.voucher_type == "SV" || tr.voucher_type == "UPSV")
+                                                    {
+                                                        weight = (int)(weight - tr.net_weight);
+                                                    }
+                                                    else if (tr.voucher_type == "PRV" && tr.Id % 2 == 1)
+                                                    {
+                                                        weight = (int)(weight - tr.net_weight);
+                                                    }
+                                                    else
+                                                    {
+                                                        weight = (int)(weight + tr.net_weight);
+                                                    }
+
+                                                }
+                                                
+                                                var value = String.Format("{0:0,0}",weight);
 
                                                 <tr class="even pointer">
-                                                  
+
                                                     <td>@t.code</td>
                                                     <td>@t.name</td>
                                                     <td>@t.type_</td>
                                                     <td>@t.updated_at_.ToShortDateString()</td>
-                                                    <td>@t.WEIGHT</td>
+                                                    <td>@value</td>
 
                                                 </tr>
                                             }

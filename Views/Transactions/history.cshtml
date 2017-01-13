@@ -1,7 +1,6 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
 
 @{
-
     ViewBag.Title = "Reports";
 }
 
@@ -59,6 +58,8 @@
 
 
         <div class="main_container">
+
+            
 
             @{
                 Html.RenderPartial("_Partial");
@@ -181,7 +182,7 @@
         if (m < 10) {
             m = "0" + m;
         };
-
+      
         data = y + "-" + m + "-" + d;
         console.log(data);
         _dat.value = data;

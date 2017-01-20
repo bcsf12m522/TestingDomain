@@ -70,26 +70,7 @@
         // This function is to calculate all the values of textboxes.
         //
 
-        function Add() {
-            var a, b, c, d;
-            a = parseInt(document.getElementById("txtFirstValue").value);
-
-            //
-            // If textbox value is null i.e empty, then the below mentioned if condition will
-            // come into picture and make the value to '0' to avoid errors.
-            //
-
-            if (isNaN(a) == true) {
-                a = 0;
-            }
-            var b = parseInt(document.getElementById("txtSecondValue").value);
-            if (isNaN(b) == true) {
-                b = 0;
-            }
-
-
-            document.getElementById("txtTotal").value = a - b
-        }
+    
     </script>
 
 
@@ -250,7 +231,7 @@
                                                 <div class="form-group">
                                                     <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="deduction" value="@Model.deduction" required>
+                                                        <input id="txtThirdValue" onkeyup="javascript:Adding();" class="form-control col-md-7 col-xs-12" type="text" name="deduction" value="@Model.deduction" required>
                                                     </div>
                                                 </div>
                                             }
@@ -265,7 +246,7 @@
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Client's Weight </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="txtTotal" class="form-control col-md-7 col-xs-12"  type="text" value="@Model.client_s_weight" name="clientWeight" required>
+                                                    <input class="form-control col-md-7 col-xs-12"  type="text" value="@Model.client_s_weight" name="clientWeight" required>
                                                 </div>
                                                 
                                             </div>
@@ -363,8 +344,35 @@
                         b = 0;
                     }
 
+                    document.getElementById("txtTotal").value = a - b;
+                 
+                }
 
-                    document.getElementById("txtTotal").value = a - b
+
+                function Adding() {
+                    var a, b, c, d;
+                    a = parseInt(document.getElementById("txtFirstValue").value);
+
+                    //
+                    // If textbox value is null i.e empty, then the below mentioned if condition will
+                    // come into picture and make the value to '0' to avoid errors.
+                    //
+
+                    if (isNaN(a) == true) {
+                        a = 0;
+                    }
+                    var b = parseInt(document.getElementById("txtSecondValue").value);
+                    if (isNaN(b) == true) {
+                        b = 0;
+                    }
+
+                    var c = parseInt(document.getElementById("txtThirdValue").value);
+                    if (isNaN(c) == true) {
+                        c = 0;
+                    }
+
+
+                    document.getElementById("txtTotal").value = a - b - c;
                 }
             </script>
 

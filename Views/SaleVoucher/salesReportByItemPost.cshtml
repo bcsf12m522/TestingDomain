@@ -185,6 +185,11 @@
                                                 {
                                                     continue;
                                                 }
+
+                                                if (t.is_active != "Y")
+                                                {
+                                                    continue;
+                                                }
                                                 
                                                     if (t.voucher_type == "JV" || t.voucher_type == "BV" || t.voucher_type == "BP" || t.voucher_type == "CP" || t.voucher_type == "CR" || t.voucher_type=="PV" || t.voucher_type=="UPPV")
                                                     {

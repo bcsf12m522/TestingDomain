@@ -1,4 +1,4 @@
-﻿@model List<ranglerz_project.Models.TransactionAccount>
+﻿@model List<ranglerz_project.ModelsBO.RoutesReport>
 
 @{
 
@@ -110,44 +110,38 @@
 
                     </div>
                     <div class="clearfix"></div>
-                    @*<div class="row">
-                        <div class="x_content">
-                            <br />
-                            <form id="demo-form2" action="@Url.Action("historyPost","Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
 
-                                <div class="form-group">
+                                <div class="x_content">
+                                    <br />
+                                    <form id="demo-form2" action="@Url.Action("Routes","Stock")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
-                                            <option value="">Please select any </option>
-                                            @foreach (var tr in ViewBag.Mylist)
-                                            {
-                                                <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                            }
+                                        <div class="form-group">
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                                <input type="date" id="dateDefault" name="dateStart" required />
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                                <input type="submit" value="Search" class="btn btn-success" />
+                                            </div>
+                                        </div>
 
 
 
-                                        </select>
-                                        <input type="date" id="dateDefault" name="dateStart" required />
-                                        <input type="date" id="dateDefault2" name="dateEnd" required />
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                        <input type="submit" value="Search" class="btn btn-success" />
-                                    </div>
                                 </div>
+
                                 <div class="ln_solid"></div>
 
-
-                            </form>
-
-
-
-
+                                </form>
+                            </div>
                         </div>
-
-                    </div>*@
-
+                    </div>
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -164,7 +158,7 @@
 
 
                                                 <th>Date </th>
-                                                <th>Day </th>
+                                            
                                                 <th>W Route 1 </th>
                                                 <th>W Route 2 </th>
                                                 <th>W Route 3 </th>
@@ -175,6 +169,7 @@
                                                 <th>W Route 8 </th>
                                                 <th>W Route 9 </th>
                                                 <th>W Route 10 </th>
+                                                <th>Total</th>
                                                
 
                                             </tr>
@@ -182,28 +177,50 @@
 
                                         <tbody>
 
-                                            @foreach (var v in Model.OrderBy(x => x.id))
-                                            {
-                                                foreach (var t in v.Transactions.Where(x => x.is_active == "Y").OrderBy(x => x.created_at).ToList())
-                                                {
+ 
+                          
+                                              
+                                                 
+                                                 @{
+                                                     int i = 0;
+                                                 } 
                                                   
-                           
+                                                   @if(Model != null)
+                                                {
 
-                                                            <tr class="even pointer">
+                                                 foreach(var name in Model)
+                                                 {
+                                                   
+                                                     i = i + 1;
+                                                     
+                                                    <tr class="even pointer">
 
+                                                        
+                                                        <td>@i</td>
 
-                                                                
-
-
-
-
-
-
-                                                            </tr>
+                                                        @foreach(var weight in name.routeTotalWeight)
+                                                        {
+                                                        <td>@weight</td>
                                                         }
-                                                    
-                                                
+                                                        
+
+                                                      
+                                                    </tr>
+                                                       
+                                                      
+                                                       
+                                                     
+                                                  }
+
+
                                                         }
+
+
+
+
+
+
+
                                         </tbody>
 
                                     </table>

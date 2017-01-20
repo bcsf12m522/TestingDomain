@@ -184,7 +184,11 @@
 
                                                     result1 = DateTime.Compare(ViewBag.start, t.created_at);
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);
-
+                                                   
+                                                    if (t.is_active != "Y")
+                                                    {
+                                                        continue;
+                                                    }
 
                                                     if (result1 < 0 || result1 == 0)
                                                     {

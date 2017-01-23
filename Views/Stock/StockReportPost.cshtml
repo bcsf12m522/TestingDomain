@@ -194,6 +194,16 @@
                                                     {
                                                         continue;
                                                     }
+
+                                                    if (t.is_active != "Y")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    if (v.id == 118 && t.voucher_type == "PRV")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    
                                                     if (result1 < 0 || result1 == 0)
                                                     {
                                                         if (result2 != -1)

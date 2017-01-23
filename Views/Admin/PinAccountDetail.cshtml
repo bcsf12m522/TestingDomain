@@ -143,7 +143,7 @@
 
                                          
                                            
-                                                @foreach (var t in Model.Transactions.Where(x => x.voucher_type != "PRV").OrderBy(x => x.created_at).ToList())
+                                                @foreach (var t in Model.Transactions.Where(x => x.is_active=="Y").OrderBy(x => x.created_at).ToList())
                                                 {
                                                     //result1 = DateTime.Compare(ViewBag.start, t.created_at);
                                                     //result2 = DateTime.Compare(ViewBag.end, t.created_at);
@@ -154,8 +154,15 @@
                                                     {
                                                         continue;
                                                     }
-                                              
-                                                    
+
+                                                    if (t.cr == 0 && t.dr == 0)
+                                                    {
+                                                        continue;
+                                                    }
+                                                    if (t.is_active != "Y")
+                                                    {
+                                                        continue;
+                                                    }
                                                       
                                                         
 

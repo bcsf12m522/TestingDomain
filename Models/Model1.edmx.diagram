@@ -61,6 +61,7 @@
         <AssociationConnector Association="Database1Model.FK_Pin_Accounts_Admin" />
         <AssociationConnector Association="Database1Model.FK_Pin_Accounts_User" />
         <EntityTypeShape EntityType="Database1Model.Users_Log" Width="1.5" PointX="14.375" PointY="11.75" />
+        <AssociationConnector Association="Database1Model.fk_Accounts" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

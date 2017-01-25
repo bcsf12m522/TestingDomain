@@ -59,7 +59,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                                Stock Report
+                                Stock Summary
                             </h3>
                         </div>
 
@@ -99,6 +99,11 @@
 
                                                 foreach (var tr in t.Transactions.Where(x => x.is_active == "Y"))
                                                 {
+                                                    if (t.id == 118 && tr.voucher_type == "PRV")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    
                                                     if (tr.extra == "Sale" && t.main_id != 12 || tr.net_weight == null)
                                                     {
                                                         continue;
@@ -111,6 +116,7 @@
                                                     {
                                                         weight = (int)(weight - tr.net_weight);
                                                     }
+                                                    
                                                     else
                                                     {
                                                         weight = (int)(weight + tr.net_weight);

@@ -127,15 +127,19 @@
                                         @if (@Model.voucher_type == "SV" || @Model.voucher_type =="UPSV")
                                         {
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">To Client </label>
+                                         <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.to_account" name="to" readonly required>
+                                        </div>
                                         }
                                         else
                                         {
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">From Vendor </label>
-                                        }
-                                        
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.from_account" name="to" readonly required>
                                         </div>
+                                        }
+                                        
+                                        
                                     </div>
 
 

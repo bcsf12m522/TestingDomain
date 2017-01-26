@@ -124,7 +124,7 @@
 
 
                                     <div class="form-group">
-                                        @if (@Model.voucher_type == "SV")
+                                        @if (@Model.voucher_type == "SV" || @Model.voucher_type =="UPSV")
                                         {
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">To Client </label>
                                         }
@@ -172,7 +172,7 @@
 
 
 
-                                          @if (Model.unit_price !=null)
+                                          @if (Model.voucher_type =="UPPV" || Model.voucher_type =="UPSV")
                                           {
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Unit Price  /Good </label>

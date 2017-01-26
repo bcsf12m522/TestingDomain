@@ -240,6 +240,25 @@
     </script>
 
 
+    <input id="alwaysFetch" type="hidden" />
+    <script>
+        setTimeout(function () {
+
+            var el = document.getElementById('alwaysFetch');
+            el.value = el.value ? location.reload() : true;
+            alert("Page is Loading Please Wait!!")
+
+        }, 0);
+
+
+
+
+
+    </script>
+
+
+
+
 
 </body>
 

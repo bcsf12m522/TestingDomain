@@ -811,11 +811,20 @@
                                                     <span><strong>@name.TransactionAccount.name</strong> </span>
                                                     <div class="clearfix"></div>
                                                     <span class="time">Current Weight(KG) : @value </span>
+                                                    
                                                 </span>
                                                 <span class="message">
+                                                    @if (name.TransactionAccount.id == 118)
+                                                    {
+                                                        var balance = (String.Format("{0:0,0}", name.TransactionAccount.balance));
+                                                        <span class="message"> <b> <i> Current Balance  : @balance </i>  </b> </span>
+                                                    }
                                                     Last Updated : @name.TransactionAccount.updated_at_
+                                                   
                                                 </span>
+                                              
                                             </a>
+                                          
                                         </li>
                                 }
                                 </ul>

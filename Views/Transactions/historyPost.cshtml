@@ -110,7 +110,7 @@
 
                     </div>
                     <div class="clearfix"></div>
-                    <div class="row">
+                    <div id="notShowSearchDiv" class="row">
                         <div class="x_content">
                             <br />
                             <form id="demo-form2" action="@Url.Action("historyPost","Transactions")" method="get" data-parsley-validate class="form-horizontal form-label-left">
@@ -157,15 +157,48 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Balance(Rs.):</strong>@ViewBag.openingBalance &nbsp;&nbsp;&nbsp;<strong> First Opening Balance(Rs.):</strong>@ViewBag.firstOpeningbalance</h2>
+                                    <div>
+                                        <h2 style="margin:4px 350px 4px 350px "><strong>@ViewBag.search</strong></h2>
+                                    </div>
+                                          <div class="clearfix"></div> 
+                                     
+                                    <div>
+                                        <h2> <strong> First Opening Balance(Rs.)&nbsp;:&nbsp;&nbsp;&nbsp;</strong>@ViewBag.firstOpeningbalance</h2>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <div>
+                                        <h2><strong>Opening Balance(Rs.)&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>@ViewBag.openingBalance</h2>
+                                    </div>
                                     <div class="clearfix"></div>  
                                 </div>
+
+                               
+                                @*<table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <thead>
+                                        <tr id="ShowHeading" class="headings" style="display:none">
+
+
+
+                                            <th>Date </th>
+                                            <th>Type </th>
+                                            <th>Code </th>
+                                            <th>Description </th>
+                                            <th>Dr </th>
+                                            <th>Cr </th>
+
+                                            <th>Balance </th>
+                                            <th id="notShowAction">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                </table>*@
 
                                 <form action="@Url.Action("ExportData","Transactions")" method="get">
                                     <div class="x_content">
                                         <table id="example" class="table table-striped responsive-utilities jambo_table">
                                             <thead>
-                                                <tr class="headings">
+                                                <tr id="notShowHeading" class="headings">
 
 
                                                    
@@ -177,7 +210,7 @@
                                                     <th>Cr </th>
 
                                                     <th>Balance </th>
-                                                    <th>Action</th>
+                                                    <th id="notShowAction">Action</th>
 
                                                 </tr>
                                             </thead>
@@ -185,6 +218,8 @@
                                             <tbody id="loadedID">
                                                 @{
                                                 int count = 0;
+                                                
+                                                int counter = 0;
                                                 }
                                                 @foreach (var v in Model.OrderBy(x => x.id))
                                                 {
@@ -213,6 +248,7 @@
                                                         {
                                                             if (result2 != -1)
                                                             {
+                                                                counter = counter + 1;
 
                                                                 <tr class="even pointer">
 
@@ -256,15 +292,15 @@
 
                                                                     }
 
-                                                                    <td>
+                                                                    <td id="@("notShow"+@counter)">
                                                                         @if (t.description != "WHT" && allReportsEdit == 1)
                                                                         {
-                                                                           
 
-                                                                                <a href="~/Transactions/Edit/@t.Id">Edit</a>
-                                                                                <a href="~/Transactions/Detail/@t.Id">Detail</a>
-                                                                                <a href="javascript:;" onclick="DeleteFunctionCall(@t.Id);">Delete</a>
-                                                                            
+
+                                                                            <a href="~/Transactions/Edit/@t.Id">Edit</a>
+                                                                            <a href="~/Transactions/Detail/@t.Id">Detail</a>
+                                                                            <a href="javascript:;" onclick="DeleteFunctionCall(@t.Id);">Delete</a>
+
 
 
                                                                         }
@@ -303,8 +339,8 @@
                                         <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
                                         <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
                                        
-                                        <p>
-                                            <a target="_blank" href="" onclick=" printingsomething();"><strong>PRINT</strong></a>
+                                        <p id="notShowPrint">
+                                            <a target="_blank" href="" onclick="printingsomething(@counter);"><strong>PRINT</strong></a>
                                         </p>
 
                                     </div>
@@ -423,10 +459,23 @@
       
     }
 
-    function printingsomething()
+    function printingsomething(counter)
     {
-   
-        //document.getElementById("notShow").style.display = "none";
+        alert("notShow"+counter);
+        for(i=1; i<=counter; i++)
+        {
+            document.getElementById("notShow"+i).style.display = "none";
+        }
+        
+        document.getElementById("notShowAction").style.display = "none";
+        document.getElementById("notShowPrint").style.display = "none";
+        document.getElementById("notShowSearchDiv").style.display = "none";
+        //document.getElementById("notShowHeading").style.display = "none";
+        //document.getElementById("ShowHeading").style.display = "block";
+        
+        
+        
+        
         window.print();
     }
 

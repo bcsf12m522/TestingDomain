@@ -122,7 +122,7 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Unit Price </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="unitPrice" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="unitPrice" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -140,19 +140,19 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Load </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" required>
+                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Empty </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="empty" required>
+                                            <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="empty" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtThirdValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
+                                            <input id="txtThirdValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="deduction" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -312,6 +312,32 @@
             return true;
         }
     }
+
+
+    function validate(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+            alert("Please Enter Only Numeric Value")
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 
 

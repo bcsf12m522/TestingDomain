@@ -179,25 +179,25 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Builty# </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="builty" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="builty" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Load </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" required>
+                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Empty </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="empty" required>
+                                            <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" onkeypress='validate(event)' name="empty" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">No. Of Bags </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="bags" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="bags" onkeypress='validate(event)' required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -364,6 +364,46 @@
         }
     }
     </script>
+
+
+
+
+
+
+
+    <input id="alwaysFetch" type="hidden" />
+    <script>
+        setTimeout(function () {
+
+            var el = document.getElementById('alwaysFetch');
+            el.value = el.value ? location.reload() : true;
+            alert("Page is Loading Please Wait!!")
+
+        }, 0);
+
+        function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if (theEvent.preventDefault) theEvent.preventDefault();
+      alert("Please Enter Only Numeric Value")
+  }
+}
+
+
+
+    </script>
+
+
+
+
+
+
+
+
 
 
 

@@ -84,7 +84,7 @@
                             
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("historyPost", "Transactions")" method="get" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("historyPost","Transactions")" method="get" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
                                       
@@ -103,7 +103,9 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                            <input type="submit" value="Search" class="btn btn-success" />
+                                            <input type="submit" value="Search" name="submitValue" class="btn btn-success" />
+                                            <input type="submit" value="Search And Print" name="submitValue" class="btn btn-success" />
+                                           
                                         </div>
                                     </div>
                                     

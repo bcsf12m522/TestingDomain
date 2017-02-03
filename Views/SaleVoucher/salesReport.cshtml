@@ -81,7 +81,87 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
-                         
+
+                            <div class="x_content">
+                                <br />
+                                <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Client <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select id="to" name="search" required onchange="GetVendors(this.value)" class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in Model)
+                                                {
+                                                    <option value="@tr.id">@tr.MainAccount.name -> @tr.name </option>
+                                                }
+
+
+                                            </select>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Good <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="from" id="VendorsDD" class="form-control  col-md-7 col-xs-12">
+                                                <option>Select any </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Date Range <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <input type="date" id="dateDefault" name="dateStart" required />
+                                            <input type="date" id="dateDefault2" name="dateEnd" required />
+                                            <br />
+                                            <br />
+
+                                            <input type="submit" value="Search" class="btn btn-success" />
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                            <div class="ln_solid"></div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+
                             <div class="x_content">
                                 <br />
                                 <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
@@ -144,27 +224,27 @@
     <script src="~/Scripts/js/custom.js"></script>
 
     <script>
-    function setInputDate(_id) {
-        var _dat = document.querySelector(_id);
-        var hoy = new Date(),
-            d = hoy.getDate(),
-            m = hoy.getMonth() + 1,
-            y = hoy.getFullYear(),
-            data;
+        function setInputDate(_id) {
+            var _dat = document.querySelector(_id);
+            var hoy = new Date(),
+                d = hoy.getDate(),
+                m = hoy.getMonth() + 1,
+                y = hoy.getFullYear(),
+                data;
 
-        if (d < 10) {
-            d = "0" + d;
+            if (d < 10) {
+                d = "0" + d;
+            };
+            if (m < 10) {
+                m = "0" + m;
+            };
+
+            data = y + "-" + m + "-" + d;
+            console.log(data);
+            _dat.value = data;
         };
-        if (m < 10) {
-            m = "0" + m;
-        };
 
-        data = y + "-" + m + "-" + d;
-        console.log(data);
-        _dat.value = data;
-    };
-
-    setInputDate("#dateDefault");
+        setInputDate("#dateDefault");
     </script>
     <script>
         function setInputDate(_id) {
@@ -188,6 +268,37 @@
         };
 
         setInputDate("#dateDefault2");
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function GetVendors(_routeId) {
+
+            var url = "/SaleVoucher/AjaxCall/";
+            var vendorslist = "#VendorsDD";
+
+            $.ajax({
+                url: url,
+                data: { RouteID: _routeId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    $("#VendorsDD").html(data);
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+        }
     </script>
 
 
@@ -197,4 +308,3 @@
 </body>
 
 </html>
-

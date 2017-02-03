@@ -234,6 +234,12 @@
                                                                     <td>@t.net_weight</td>
                                                                     totalCredit = (int)(totalCredit + t.net_weight);
                                                                 }
+                                                                else if (t.voucher_type == "WEV" && t.Id % 2 == 1)
+                                                                {
+                                                                    <td>0</td>
+                                                                    <td>@t.net_weight</td>
+                                                                    totalCredit = (int)(totalCredit + t.net_weight);
+                                                                }
                                                                 else
                                                                 {
                                                                     <td>@t.net_weight</td>

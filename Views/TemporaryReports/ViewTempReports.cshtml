@@ -278,6 +278,10 @@
                                                                     {
                                                                         <a onclick="return check(this);" href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
                                                                     }
+                                                                    else if (v.voucher_type == "WEV")
+                                                                    {
+                                                                        <a onclick="return check(this);" href="@Url.Action("weightExpensePost","Transactions", new { id = @v.Id })"> OK</a>
+                                                                    }
                                                                     else if (v.voucher_type == "EV")
                                                                     {
                                                                         <a onclick="return check(this);" href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
@@ -399,7 +403,11 @@
                                                             {
                                                             <a onclick="return check(this);" href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
                                                             }
-                                                            else if(v.voucher_type=="EV")
+                                                            else if (v.voucher_type == "WEV")
+                                                            {
+                                                                <a onclick="return check(this);" href="@Url.Action("weightExpensePost","Transactions", new { id = @v.Id })"> OK</a>
+                                                            }
+                                                            else if (v.voucher_type == "EV")
                                                             {
                                                             <a onclick="return check(this);" href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
                                                             }

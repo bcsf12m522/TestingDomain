@@ -81,17 +81,21 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
+                            <div class="x_title">
+                                <h2>W.R.T ITEM <small></small></h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <form id="demo-form2" action="@Url.Action("salesReportPostItemWise", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <div class="x_content">
+                                    <br />
 
-                            <div class="x_content">
-                                <br />
-                                <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                             Client <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select id="to" name="search" required onchange="GetVendors(this.value)" class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select id="to" name="id" required onchange="GetVendors(this.value)" class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
@@ -110,7 +114,7 @@
                                             Good <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="from" id="VendorsDD" class="form-control  col-md-7 col-xs-12">
+                                            <select name="item" id="VendorsDD" class="form-control  col-md-7 col-xs-12">
                                                 <option>Select any </option>
                                             </select>
                                         </div>
@@ -150,24 +154,33 @@
 
 
 
-                            </div>
+                                </div>
 
-                            <div class="ln_solid"></div>
+                                <div class="ln_solid"></div>
 
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
+                            <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <div class="x_content">
+                                    <div class="x_title">
+                                        <h2>ALL ITEMS <small></small></h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <br />
 
-                            <div class="x_content">
-                                <br />
-                                <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
-
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Client <span class="required">*</span>
+                                        </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
@@ -178,21 +191,31 @@
 
 
                                             </select>
-                                            <input type="date" id="dateDefault" name="dateStart" required />
-                                            <input type="date" id="dateDefault2" name="dateEnd" required />
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                            <input type="submit" value="Search" class="btn btn-success" />
                                         </div>
                                     </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                Date Range <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                                <input type="date" id="dateDefault3" name="dateStart" required />
+                                                <input type="date" id="dateDefault4" name="dateEnd" required />
+                                                <br />
+                                                <br />
+
+                                                <input type="submit" value="Search" class="btn btn-success" />
+                                            </div>
+                                        </div>
+                                   
 
 
 
 
-                            </div>
+                                </div>
 
-                            <div class="ln_solid"></div>
+                                <div class="ln_solid"></div>
 
                             </form>
                         </div>
@@ -299,6 +322,56 @@
                 }
             });
         }
+    </script>
+
+
+    <script>
+    function setInputDate(_id) {
+        var _dat = document.querySelector(_id);
+        var hoy = new Date(),
+            d = hoy.getDate(),
+            m = hoy.getMonth() + 1,
+            y = hoy.getFullYear(),
+            data;
+
+        if (d < 10) {
+            d = "0" + d;
+        };
+        if (m < 10) {
+            m = "0" + m;
+        };
+
+        data = y + "-" + m + "-" + d;
+        console.log(data);
+        _dat.value = data;
+    };
+
+    setInputDate("#dateDefault3");
+    </script>
+
+
+    <script>
+    function setInputDate(_id) {
+        var _dat = document.querySelector(_id);
+        var hoy = new Date(),
+            d = hoy.getDate(),
+            m = hoy.getMonth() + 1,
+            y = hoy.getFullYear(),
+            data;
+
+        if (d < 10) {
+            d = "0" + d;
+        };
+        if (m < 10) {
+            m = "0" + m;
+        };
+
+        data = y + "-" + m + "-" + d;
+        console.log(data);
+        _dat.value = data;
+    };
+
+    setInputDate("#dateDefault4");
     </script>
 
 

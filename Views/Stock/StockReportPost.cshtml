@@ -259,6 +259,10 @@
                                                             {
                                                                 balance = balance - t.net_weight;
                                                             }
+                                                            else if (t.voucher_type == "WEV" && t.Id % 2 == 1)
+                                                            {
+                                                                balance = balance - t.net_weight;
+                                                            }
                                                             else
                                                             {
                                                                 balance = balance + t.net_weight;

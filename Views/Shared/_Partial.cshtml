@@ -58,7 +58,7 @@
         <!-- menu prile quick info -->
         <div class="profile">
             <div class="profile_pic">
-                <img src="@Session["image"]"  alt="..." class="img-circle profile_img">
+                <img src="~/images/kamran.png"  alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -92,10 +92,10 @@
                             }
                             @if (create == "Y")
                             {
-                                 
-                            <li>
-                                <a href="~/USER_CRUD/ReportsPermissions/">Add Permissions</a>
-                            </li>
+
+                                <li>
+                                    <a href="~/USER_CRUD/ReportsPermissions/">Add Permissions</a>
+                                </li>
                             }
                         </ul>
                     </li>
@@ -200,7 +200,7 @@
                                 </li>
 
                             }
-                            
+
                             <li>
                                 <a target="_blank" href="~/Transactions/weightExpense/">Weight Expense Voucher</a>
                             </li>
@@ -265,7 +265,7 @@
                                 </li>
 
                             }
-                            
+
 
                             <li>
                                 <a target="_blank" href="~/Transactions/mainReports/"><i class="fa fa-bar-chart-o"></i>Main Reports</a>
@@ -304,21 +304,21 @@
                                 </li>
 
                             }
-                            
+
                             @if (bankPamyenetReports == 1)
                             {
                                 <li>
                                     <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
                                 </li>
                             }
-                            
+
                             @if (purchaseReports == 1)
                             {
                                 <li>
                                     <a target="_blank" href="~/SaleVoucher/purchaseReport/"><i class="fa fa-bar-chart-o"></i>Purchase Reports</a>
                                 </li>
                             }
-                            
+
                             @if (addProduction == 1)
                             {
 
@@ -327,14 +327,24 @@
                                     <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
                                 </li>
                             }
-                            
-                            @if (trialBalanceReport ==1)
+
+                            @if (trialBalanceReport == 1)
                             {
-                                 
-                            <li>
-                                <a href="~/Transactions/TrialBalanceReport/"><i class="fa fa-bar-chart-o"></i> Trial Balance Report</a>
-                            </li>
+
+                                <li>
+                                    <a href="~/Transactions/TrialBalanceReport/"><i class="fa fa-bar-chart-o"></i> Trial Balance Report</a>
+                                </li>
                             }
+                            <li>
+                                <a target="_blank" href="~/Stock/StockReport/"><i class="fa fa-bar-chart-o"></i> Stock Report</a>
+
+                            </li>
+
+                            <li>
+
+                                <a target="_blank" href="~/Stock/Routes/"><i class="fa fa-bar-chart-o"></i> Routes Report</a>
+
+                            </li>
                         </ul>
 
                     </li>
@@ -346,7 +356,7 @@
 
 
 
-                   
+
 
 
 
@@ -390,50 +400,65 @@
                     @if (supervision == 1)
                     {
                         <li>
-                            <a target="_blank" href="~/TemporaryReports/ViewTempReports/"><i class="fa fa-bar-chart-o"></i>Super Vision</a>
-                        </li>
+
+                            <a><i class="fa fa-bar-chart-o"></i>Supervision <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu" style="display: none">
 
 
-                        <li>
-                            <a target="_blank" href="~/USER_CRUD/Supervision/"><i class="fa fa-bar-chart-o"></i>SuperVision User's Wise</a>
+
+                                <li>
+                                    <a target="_blank" href="~/TemporaryReports/ViewTempReports/"><i class="fa fa-bar-chart-o"></i>All </a>
+                                </li>
+
+                                <li>
+                                    <a target="_blank" href="~/USER_CRUD/Supervision/"><i class="fa fa-bar-chart-o"></i>User's Wise</a>
+                                </li>
+                            </ul>
                         </li>
 
                     }
 
-                    @if (viewGoodTypes == 1)
-                    {
 
-                        <li>
-                            <a target="_blank" href="~/GoodsManagement/listGoodTypes/"><i class="fa fa-bar-chart-o"></i>Good Types</a>
+
+                    <li>
+
+                        <a><i class="fa fa-bar-chart-o"></i> Goods Management <span class="fa fa-chevron-down"></span></a>
+
+                        <ul class="nav child_menu" style="display: none">
+
+
+                
+
+                            @if (viewGoods == 1)
+                            {
+                                <li>
+                                    <a target="_blank" href="~/GoodsManagement/listOfGoods/"><i class="fa fa-bar-chart-o"></i>All Goods</a>
+                                </li>
+                            }
+                            @if (viewGoodTypes == 1)
+                            {
+
+                                <li>
+                                    <a target="_blank" href="~/GoodsManagement/listGoodTypes/"><i class="fa fa-bar-chart-o"></i>Good Types</a>
+                                </li>
+
+                            }
+
+                            <li>
+                                <a href="~/GoodsManagement/viewUnitRates/"> <i class="fa fa-bar-chart-o"></i> Unit Rates </a>
+                            </li>
+                            </ul>
                         </li>
+                            <li>
+                                <a target="_blank" href="~/Stock/index/"><i class="fa fa-bar-chart-o"></i> Stock Summary</a>
 
-                    }
-
-                    @if (viewGoods == 1)
-                    {
-                        <li>
-                            <a target="_blank" href="~/GoodsManagement/listOfGoods/"><i class="fa fa-bar-chart-o"></i>Goods Management</a>
-                        </li>
-                    }
+                            </li>
 
 
-                    <li>
-                        <a href="~/GoodsManagement/viewUnitRates/"> <i class="fa fa-bar-chart-o"></i>View Unit Rates </a>
-                    </li>
 
-                    <li>
-                        <a target="_blank" href="~/Stock/index/"><i class="fa fa-bar-chart-o"></i> Stock Summary</a>
-
-                    </li>
-
-                    <li>
-                        <a target="_blank" href="~/Stock/StockReport/"><i class="fa fa-bar-chart-o"></i> Stock Report</a>
-
-                    </li>
-          
-                <li style="">
-                    <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
-                </li>
+                            <li style="">
+                                <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
+                            </li>
 
 </div>
 

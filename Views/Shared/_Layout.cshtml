@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
 
 
 
@@ -26,6 +26,41 @@
     <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
 
     <script src="~/Scripts/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="~/Content/css/chosen.css" media="all" />
+
+
+    <script src="~/Scripts/js/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <script>
+    //* enchanced select
+    chosen_select = {
+        init: function () {
+            $(".chzn-select").chosen();
+        }
+    };
+
+    $(document).ready(function () {
+        // extended select elements
+        chosen_select.init();
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </head>
 <body class="nav-md">

@@ -1,5 +1,10 @@
 ﻿@model  ranglerz_project.Models.HeadAccount
 @{
+    
+    
+    ranglerz_project.Services.TransactionServices service = new ranglerz_project.Services.TransactionServices();
+    
+    
     ViewBag.Title = "MainReportsPostHead";
     var sesion = Session["name"].ToString();
     int result1;
@@ -112,7 +117,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
-                                    <option value="">Please select any </option>
+                                    <option value="@ViewBag.search">@ViewBag.search </option>
                                     @foreach (var tr in ViewBag.headAccounts)
                                     {
 
@@ -152,39 +157,54 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>View Reports</h2>
+                                <div>
+                                    <h2>@ViewBag.search</h2>
+                                </div>
+                                <div class="pull-right">
+                                    <input type="button" class="btn btn-success" onclick="tableToExcel('testTable', 'W3C Example Table')" value="Export to Excel">
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
+                            
                             <div class="x_content">
-                                <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                <table id="testTable" class="table table-striped responsive-utilities jambo_table">
                                     <thead>
                                         <tr class="headings">
 
-                                            @if (sesion == "Admin")
-                                            {
-                                                <th>User Name</th>
-                                            }
 
-                                            <th>Date </th>
-                                            <th>Type </th>
-                                            <th>Code </th>
-                                            <th>Description </th>
-                                            <th>Dr </th>
-                                            <th>Cr </th>
-                                            
-                                            <th>Balance </th>
-                                            <th>Action</th>
+
+
+
+
+
+                                            <th>Account Name </th>
+                                            @*<th>Opening Balance</th>*@
+                                            <th>Total Debit </th>
+                                            <th>Total Credit </th>
+                                            <th>Balance</th>
+
 
                                         </tr>
                                     </thead>
 
                                     <tbody>
 
-                                        @foreach (var sub in Model.SubHeadAccounts)
+                                        @foreach (var sub in Model.SubHeadAccounts.Where(x => x.is_active == "Y"))
                                         {
-                                            foreach (var trans in sub.TransactionAccounts)
+                                            foreach (var trans in sub.TransactionAccounts.Where(x => x.is_active == "Y"))
                                             {
 
+                                                balance = service.findOpeningBalancebeforeDate(ViewBag.start, trans.name);
+                                                var credit = 0;
+                                                var debit = 0;
+                                                //if (trans.parent != null)
+                                                //{
+                                                //    balance = Convert.ToInt32(trans.parent);
+                                                //}
+                                                //else
+                                                //{
+                                                //    balance = 0;
+                                                //}
                                                 foreach (var t in trans.Transactions.Where(x => x.is_active == "Y").OrderBy(x => x.created_at).ToList())
                                                 {
 
@@ -194,7 +214,7 @@
                                                     drCommas = (String.Format("{0:0,0}", t.dr));
 
 
-                                                    if (t.extra == "Sale" && trans.main_id !=12)
+                                                    if (t.extra == "Sale" && trans.main_id != 12)
                                                     {
                                                         continue;
                                                     }
@@ -202,7 +222,7 @@
                                                     {
                                                         continue;
                                                     }
-                                                    
+
                                                     if (result1 < 0 || result1 == 0)
                                                     {
 
@@ -211,91 +231,56 @@
                                                         {
 
 
-                                                            <tr class="even pointer">
-
-
-                                                                @if (sesion == "Admin")
-                                                                {
-                                                                    if (t.User != null)
-                                                                    {
-                                                                        <td>@t.User.name</td>
-                                                                    }
-                                                                    else if (@t.Admin != null)
-                                                                    {
-                                                                        <td>@t.Admin.username</td>
-                                                                    }
-                                                                }
-                                                                <td>@t.created_at</td>
 
 
 
-
-                                                                <td>@t.voucher_type</td>
-                                                                <td>@t.voucher_code</td>
-                                                                <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
-
-                                                                <td>@crCommas</td>
-                                                                <td>@drCommas</td>
-                                                              
-                                                                @{
-
-                                                                if (t.cr > 0)
-                                                                {
-                                                                    balance = (int)(balance + t.cr);
-                                                                }
-                                                                else
-                                                                {
-                                                                    balance = (int)(balance - t.dr);
-                                                                }
-
-                                                                //   var tt = Convert.ToInt64(t.balance);
-                                                                //   var balance = String.Format("{0:#,##0.00}", tt);
-                                                                values = (String.Format("{0:0,0}", balance));
-                                                                }
-                                                                <td> @values</td>
-                                                                @{
-                                                                totalBalance = totalBalance + balance;
-                                                                totalCredit = (int)(totalCredit + t.cr);
-                                                                totalDebit = (int)(totalDebit + t.dr);
-                                                                }
+                                                            credit = credit + t.cr;
+                                                            debit = debit + t.dr;
 
 
 
 
 
-
-
-
-
-
-                                                                <td>
-                                                                    @if (expenseReportEdit == 1)
-                                                                    {
-
-                                                                        <a href="@Url.Action("Edit","ExpenseVoucher" , new {id= @t.Id} )">Edit</a>
-                                                                    }
-                                                                </td>
-
-
-
-                                                            </tr>
                                                         }
                                                     }
                                                 }
 
+                                                <tr>
+                                                    @{
+                                                balance = credit - debit + balance;
+                                                totalBalance = totalBalance + balance;
+                                                totalCredit = totalCredit + credit;
+                                                totalDebit = totalDebit + debit;
+                                                    }
+
+                                                    <td>@trans.name</td>
+                                                    @*<td>@trans.parent</td>*@
+                                                    <td>@credit</td>
+                                                    <td>@debit</td>
+
+                                                    <td>@balance</td>
+
+
+
+                                                </tr>
+
                                             }
                                         }
+                                        <tr style="background-color:#3f5367; color:#fff">
+                                            <td>TOTAL</td>
+                                            @*<td>0</td>*@
+                                            <td>@totalCredit</td>
+                                            <td>@totalDebit</td>
+
+                                            <td>@totalBalance</td>
+                                        </tr>
                                     </tbody>
 
                                 </table>
-                                @{
-                                    totalCreditCommas = (String.Format("{0:0,0}", totalCredit));
-                                    totaldebitCommas = (String.Format("{0:0,0}", totalDebit));
-                                    totalBalanceCommas = (String.Format("{0:0,0}", totalBalance));
-                                }
-                                @*<p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalanceCommas</p>*@
-                                <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
-                                <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
+
+
+
+                              
 
                             </div>
                         </div>
@@ -318,33 +303,33 @@
     <script src="~/Scripts/js/custom.js"></script>
 
     <script type="text/javascript">
-    function confirm_delete() {
-        return confirm('are you sure?');
-    }
+        function confirm_delete() {
+            return confirm('are you sure?');
+        }
     </script>
 
     <script>
-    function setInputDate(_id) {
-        var _dat = document.querySelector(_id);
-        var hoy = new Date(),
-            d = hoy.getDate(),
-            m = hoy.getMonth() + 1,
-            y = hoy.getFullYear(),
-            data;
+        function setInputDate(_id) {
+            var _dat = document.querySelector(_id);
+            var hoy = new Date(),
+                d = hoy.getDate(),
+                m = hoy.getMonth() + 1,
+                y = hoy.getFullYear(),
+                data;
 
-        if (d < 10) {
-            d = "0" + d;
+            if (d < 10) {
+                d = "0" + d;
+            };
+            if (m < 10) {
+                m = "0" + m;
+            };
+
+            data = y + "-" + m + "-" + d;
+            console.log(data);
+            _dat.value = data;
         };
-        if (m < 10) {
-            m = "0" + m;
-        };
 
-        data = y + "-" + m + "-" + d;
-        console.log(data);
-        _dat.value = data;
-    };
-
-    setInputDate("#dateDefault");
+        setInputDate("#dateDefault");
     </script>
     <script>
         function setInputDate(_id) {
@@ -374,7 +359,19 @@
 
 
 
-
+    <script type="text/javascript">
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+    </script>
 
 
 
@@ -389,4 +386,3 @@
 </body>
 
 </html>
-

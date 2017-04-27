@@ -51,6 +51,58 @@
 }
 
 
+<style>
+    @@media only screen and (min-width : 992px) {
+        #left-nav {
+            display: block !important;
+        }
+
+        #mobile-nav {
+            display: none !important;
+        }
+    }
+
+    @@media only screen and (min-width : 100px) and (max-device-width : 991px) {
+        #left-nav {
+            display: none !important;
+        }
+
+        #mobile-nav {
+            display: block !important;
+        }
+    }
+</style>
+
+<link rel="stylesheet" type="text/css" href="~/content/Mobile Menu/css/style.css">
+
+<script type="text/javascript">
+        $(document).ready(function (e) {
+            $("#mmenu").hide();
+            $(".mtoggle").click(function () {
+                $("#mmenu").slideToggle(500);
+            });
+        });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div id="mobile-nav">
 

@@ -88,13 +88,13 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Debit Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="Debitdate" required>
+                                            <input id="dateDefault" readonly class="form-control col-md-7 col-xs-12" type="date" name="Debitdate" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Credit Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="date" required>
+                                            <input id="dateDefault2" readonly class="form-control col-md-7 col-xs-12" type="date" name="date" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,22 +103,20 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
                                         </div>
                                     </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                            <input type="submit" id="btnSubmit" name="actionType" value="Add Voucher" class="btn btn-success" />
+                                            <input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />
+                                            <input type="hidden" name="voucherCode" value="@ViewBag.Code" />
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
-                            <div class="form-group">
-
-
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-
-                                    <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
-                                    <input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />
-                                    <input type="hidden" name="voucherCode" value="@ViewBag.Code" />
-                                </div>
-                            </div>
-
-                            </form>
+                            
+                           
                         </div>
                     </div>
                 </div>

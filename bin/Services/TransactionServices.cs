@@ -525,7 +525,7 @@ namespace ranglerz_project.Services
 
         public int findOpeningWeightBeforeDates(string enddate, string searching)
         {
-            string strs = null;
+            
             DateTime date = Convert.ToDateTime(enddate);
             TransactionAccount account = db.TransactionAccounts.Where(x => x.name == searching & x.is_active == "Y").First();
             List<Transaction> transactions = account.Transactions.Where(x => x.created_at < date & x.is_active == "Y").ToList();
